@@ -6,7 +6,7 @@ Robos-me, React ve Next.js tabanlı bir web uygulamasıdır. Bu proje, kullanıc
 
 - **Next.js**: Server-side rendering (SSR) ve static site generation (SSG) desteği ile performanslı bir yapıya sahiptir.
 - **React Hook Form**: Formların yönetimini kolaylaştırır.
-- **Zod ve Yup**: Form doğrulama işlemlerinde kullanılır.
+- **Zod**: Form doğrulama işlemlerinde kullanılır.
 - **Zustand**: Global state yönetimi için kullanılır.
 - **React Toastify**: Kullanıcıya uyarı ve bilgilendirme mesajları sunar.
 - **SASS**: SCSS ile daha güçlü stil yönetimi yapılır.
