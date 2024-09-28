@@ -1,0 +1,72 @@
+@use '_responsive.scss' as *;
+
+.textarea_wrapper {
+  width: 100%;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.label_textarea {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  color: gray;
+  padding: 4px;
+  font-weight: 500;
+  font-size: 12px;
+  top: -10px;
+  left: 20px;
+  background-color: white;
+}
+
+.error_message {
+  padding: 3px 0px 0px 10px;
+  display: block;
+  font-weight: 400;
+}
+
+.textarea_container {
+  position: relative;
+}
+
+.textarea,
+.textarea:focus {
+  width: 100%;
+  height: 200px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  transition: border-color 0.3s ease;
+  color: var(--black);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 17px 25px;
+  overflow: hidden;
+  resize: none;
+  @include custom-breakpoint('tablet') {
+    font-size: 18px;
+  }
+}
+.textarea::placeholder {
+  font-weight: 400;
+  color: gray;
+  font-size: 14px;
+  @include custom-breakpoint('tablet') {
+    font-size: 18px;
+  }
+}
+
+.error_message {
+  position: absolute;
+  margin-top: 2px;
+  display: block;
+  font-weight: 400;
+  color: red;
+}
+.textarea_has_error {
+  border-color: red !important;
+  color: red !important;
+  &.textarea,
+  &.textarea::placeholder {
+    color: red !important;
+  }
+}

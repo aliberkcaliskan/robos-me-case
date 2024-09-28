@@ -1,0 +1,63 @@
+@use '_responsive.scss' as *;
+.container {
+  background-color: #242780;
+  width: 100%;
+  padding: 40px;
+  height: 100%;
+  .detailContainer {
+    padding: 40px;
+    max-width: 700px;
+    margin: 32px auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin: 20px;
+    @include custom-breakpoint('tablet') {
+      margin: 0px auto;
+    }
+    &:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+      color: #333;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: #007bff;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    button {
+      margin-bottom: 10px;
+    }
+
+    .editForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .formGroup {
+      margin-bottom: 24px;
+      width: 100%;
+    }
+  }
+}

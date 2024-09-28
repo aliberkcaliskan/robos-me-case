@@ -1,0 +1,33 @@
+@use '_responsive.scss' as *;
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  list-style-type: none;
+  padding: 20px 40px 20px 40px;
+  @include custom-breakpoint('laptop') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.item {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: #555;
+  }
+}

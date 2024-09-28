@@ -1,0 +1,21 @@
+$custom-breakpoints: (
+  mobile: 375px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1440px,
+) !default;
+
+@mixin custom-breakpoint($breakpoint) {
+  @if map-has-key($custom-breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($custom-breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+@mixin not-custom-breakpoint($breakpoint) {
+  @if map-has-key($custom-breakpoints, $breakpoint) {
+    @media not all and (min-width: map-get($custom-breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}

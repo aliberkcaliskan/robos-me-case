@@ -1,0 +1,19 @@
+@use '_responsive.scss' as *;
+
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+
+  .header_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid var(--neutral-300);
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+}

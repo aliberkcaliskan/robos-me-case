@@ -1,0 +1,30 @@
+@use '_responsive.scss' as *;
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin main-container {
+  margin-right: var(--mobile-margin);
+  margin-left: var(--mobile-margin);
+
+  @include custom-breakpoint('tablet') {
+    max-width: 768px;
+    width: 768px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include custom-breakpoint('laptop') {
+    max-width: 1024px;
+    width: 1024px;
+  }
+
+  @include custom-breakpoint('desktop') {
+    max-width: 1320px;
+    width: 1320px;
+  }
+}

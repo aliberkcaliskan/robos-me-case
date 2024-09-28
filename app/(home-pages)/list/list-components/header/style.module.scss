@@ -1,0 +1,66 @@
+@use '_responsive.scss' as *;
+
+.headerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: #2c2a84;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  @include custom-breakpoint('laptop') {
+    align-items: normal;
+    flex-direction: row;
+
+    gap: 0px;
+  }
+}
+
+.searchBox {
+  width: 100%;
+  max-width: 100%;
+  @include custom-breakpoint('laptop') {
+    max-width: 500px;
+  }
+  .searchInput {
+    padding: 8px 16px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    font-size: 16px;
+    color: white;
+    transition: border-color 0.2s ease;
+    &:focus {
+      outline: none;
+      border-color: white;
+    }
+    &::placeholder {
+      color: white;
+      opacity: 1;
+    }
+  }
+}
+.userProfile {
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  gap: 20px;
+  @include custom-breakpoint('laptop') {
+    display: flex;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #343a40;
+
+    span {
+      color: white;
+      font-size: 12px;
+    }
+  }
+}
