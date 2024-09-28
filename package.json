@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@types/yup": "^0.32.0",
     "axios": "^1.6.0",
     "classnames": "^2.3.2",
     "date-fns": "^3.6.0",
@@ -25,7 +24,7 @@
     "react-toastify": "^10.0.5",
     "react-use": "^17.5.0",
     "sass": "^1.69.0",
-    "yup": "^1.4.0",
+    "zod": "^3.23.8",
     "zustand": "^4.4.3"
   },
   "devDependencies": {

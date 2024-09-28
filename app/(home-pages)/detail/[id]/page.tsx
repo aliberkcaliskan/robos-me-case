@@ -6,31 +6,33 @@ import InputComponent from '@/components/forms/inputs/input';
 import TextareaComponent from '@/components/forms/inputs/textarea';
 import { ROUTES } from '@/constants/routes';
 import usePostStore from '@/stores/slices/list';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import * as yup from 'yup';
+import { z } from 'zod';
 import style from './style.module.scss';
 
-const schema = yup.object().shape({
-  title: yup
+const schema = z.object({
+  title: z
     .string()
-    .required('Başlık zorunludur')
     .min(3, 'Başlık en az 3 karakter olmalıdır')
-    .max(50, 'Başlık en fazla 50 karakter olabilir'),
-  body: yup
+    .max(50, 'Başlık en fazla 50 karakter olabilir')
+    .nonempty('Başlık zorunludur'),
+  body: z
     .string()
-    .required('İçerik zorunludur')
     .min(10, 'İçerik en az 10 karakter olmalıdır')
-    .max(500, 'İçerik en fazla 500 karakter olabilir'),
+    .max(500, 'İçerik en fazla 500 karakter olabilir')
+    .nonempty('İçerik zorunludur'),
 });
+
+// Zod şemasından otomatik tip çıkarımı
+type FormData = z.infer<typeof schema>;
 
 const DetailPage: React.FC = () => {
   const router = useRouter();
-
   const { id } = useParams();
   const { selectedPost, loadPostById, updatePost, isLoading, errorMessage } = usePostStore();
   const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -40,8 +42,8 @@ const DetailPage: React.FC = () => {
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
   });
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const DetailPage: React.FC = () => {
     }
   }, [selectedPost, setValue]);
 
-  const onSubmit = async (data: { title: string; body: string }) => {
+  const onSubmit = async (data: FormData) => {
     if (typeof id === 'string') {
       await updatePost(id, data);
       setIsEditing(false);

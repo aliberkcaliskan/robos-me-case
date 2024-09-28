@@ -1,27 +1,25 @@
 'use client';
+
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import useUserStore from '@/stores/slices/user';
 import InputComponent from '@/components/forms/inputs/input';
 import Button from '@/components/button';
 import style from './style.module.scss';
 import { ROUTES } from '@/constants/routes';
 
-const loginSchema = yup.object().shape({
-  companyCode: yup.string().required('Şirket Kodu zorunludur').max(6, 'Şifre en fazla 6 karakter olmalıdır'),
-  region: yup.string().required('Bölge zorunludur'),
-  email: yup.string().email('Geçersiz e-posta adresi').required('E-posta zorunludur'),
-  password: yup.string().min(6, 'Şifre en az 6 karakter olmalıdır').required('Şifre zorunludur'),
+// Zod şeması
+const loginSchema = z.object({
+  companyCode: z.string().nonempty('Şirket Kodu zorunludur').max(6, 'Şirket Kodu en fazla 6 karakter olmalıdır'),
+  region: z.string().nonempty('Bölge zorunludur'),
+  email: z.string().email('Geçersiz e-posta adresi').nonempty('E-posta zorunludur'),
+  password: z.string().min(6, 'Şifre en az 6 karakter olmalıdır').nonempty('Şifre zorunludur'),
 });
 
-type LoginFormInputs = {
-  companyCode: string;
-  region: string;
-  email: string;
-  password: string;
-};
+// Zod şemasından otomatik tip çıkarımı
+type LoginFormInputs = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
   const {
@@ -29,8 +27,9 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>({
-    resolver: yupResolver(loginSchema),
+    resolver: zodResolver(loginSchema),
   });
+
   const router = useRouter();
   const { setUser } = useUserStore();
 
