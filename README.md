@@ -10,7 +10,6 @@ Robos-me, React ve Next.js tabanlı bir web uygulamasıdır. Bu proje, kullanıc
 - **Zustand**: Global state yönetimi için kullanılır.
 - **React Toastify**: Kullanıcıya uyarı ve bilgilendirme mesajları sunar.
 - **SASS**: SCSS ile daha güçlü stil yönetimi yapılır.
-- **Jest ve Testing Library**: Test işlemleri için kullanılır.
 - **TypeScript**: Tip güvenliği sağlar ve daha sağlam bir kod yapısı oluşturur.
 
 ## Kurulum
@@ -22,3 +21,13 @@ Projeyi yerel makinenize klonladıktan sonra şu adımları izleyerek projeyi ç
 ```bash
 git clone https://github.com/kullanici/robos-me.git
 cd robos-me
+# NPM ile
+npm install
+
+# veya Yarn ile
+yarn install
+# NPM ile
+npm run dev
+
+# veya Yarn ile
+yarn dev
